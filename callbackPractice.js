@@ -25,7 +25,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 
   //Code Here for first
-  
+var first = function(arr, cb){
+  cb(arr[0]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -38,7 +40,9 @@ first(names, function(firstName){
 
 
 
-
+var last = function(arr, cb){
+  cb(arr[arr.length-1]);
+}
   //Code Here for last
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -56,8 +60,11 @@ last(names, function(lastName){
 
 
 
-
+var multiply = function(num1, num2, cb) {
+  var answer = num1 * num2;
+  cb(answer);
   //Code Here for multiply
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -69,7 +76,15 @@ multiply(4, 3, function(answer){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
+var contains = function(names, val, cb) {
+  var result = false;
+  for (var x = 0; x < names.length -1; x++)  {
+    if (names[x] === val){
+      result = true;
+    }
+  }
+  cb(result);
+}
 
 
 
@@ -89,7 +104,17 @@ contains(names, 'Colt', function(result){
 
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
-
+var uniq = function (names, cb) {
+  for (var y = 0; y < names.length; y++)  {
+    for (var x = 0; x < y; x++)  {
+    if (names[x] === names[y]){
+          names.splice(y,1);
+          y--;
+      }
+    }
+  }
+  cb(names);
+}
 
 
 
@@ -107,7 +132,11 @@ uniq(names, function(uniqArr){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+var each = function(name, cb){
+  for(var x = 0; x < name.length; x++){
+    cb(name[x], x);
+  }
+}
 
     //Code Here for each
 
@@ -124,7 +153,15 @@ each(names, function(item, indice){
 
 
 
-
+var getUserById = function(users, id, cb){
+  for (var x = 0; x < users.length; x++)
+  {
+    if (users[x].id === id)
+    {
+      cb(users[x]);
+    }
+  }
+}
 
  //code here for getUserById
 
